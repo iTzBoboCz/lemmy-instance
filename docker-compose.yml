@@ -81,6 +81,6 @@ services:
       - ./docker/NginxProxyManager/data/letsencrypt:/etc/letsencrypt
     ports:
       - 80:80
-      - 81:81
+      - 83:81
       - 443:443
     restart: unless-stopped
