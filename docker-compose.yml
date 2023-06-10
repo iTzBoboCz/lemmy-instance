@@ -86,7 +86,6 @@ services:
       # setup your certbot and letsencrypt config 
       - ./nginx/certbot:/var/www/certbot
       - ./nginx/letsencrypt:/etc/letsencrypt/live
-    restart: always
     depends_on:
       - pictrs
       - lemmy-ui
