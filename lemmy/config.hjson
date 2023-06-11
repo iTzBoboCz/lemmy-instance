@@ -9,7 +9,7 @@
     # password for the admin user
     admin_password: "admin"
     # name of the site (can be changed later)
-    site_name: "mylemmyinstance"
+    site_name: "personality"
   }
 
   # the domain name of your instance (eg "lemmy.ml")
@@ -42,4 +42,6 @@
     # maximum number of active sql connections
     pool_size: 5
   }
+
+  hostname: lemmy.ondrejp.cz
 }
