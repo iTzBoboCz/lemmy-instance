@@ -86,7 +86,10 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       # setup your certbot and letsencrypt config 
       - ./certbot/www:/var/www/certbot
-      - ./certbot/letsencrypt/live:/etc/letsencrypt/live
+      # - ./certbot/letsencrypt/live:/etc/letsencrypt/live
+      - ./certbot/letsencrypt:/etc/letsencrypt
+      # https://stackoverflow.com/a/40322275
+      - ./certbot/letsencrypt/archive:/etc/letsencrypt/archive
     depends_on:
       - pictrs
       - lemmy-ui
@@ -95,7 +98,9 @@ services:
   certbot:
     image: certbot/certbot
     container_name: certbot
-    volumes: 
+    volumes:
       - ./certbot/letsencrypt:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
-    command: certonly --webroot -w /var/www/certbot --force-renewal --email {email} -d {domain} --agree-tos
+    # command: certonly --nginx
+    command: certificates
+    #command: certonly --webroot -w /var/www/certbot --force-renewal --email bobo12002@icloud.com -d lemmy.ondrejp.cz --agree-tos
